@@ -54,7 +54,7 @@ Aliyun IOT LinkSDK 4.x for esp-idf
     CONFIG_MBEDTLS_X509_CRL_PARSE_C=n
     CONFIG_MBEDTLS_X509_CSR_PARSE_C=n
 
-更多信息请参考[乐鑫 ESP32 移植](http://code.aliyun.com/linksdk/docs/wikis/best-practice/ESP32_Porting)文档。
+具体请见[示例](example)，更多信息请参考[乐鑫 ESP32 移植](http://code.aliyun.com/linksdk/docs/wikis/best-practice/ESP32_Porting)文档。
 
 ## SDK 功能
 

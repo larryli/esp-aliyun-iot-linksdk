@@ -881,7 +881,7 @@ void core_sysdep_mutex_deinit(void **mutex)
     }
 }
 
-aiot_sysdep_portfile_t aiot_sysdep_portfile = {
+aiot_sysdep_portfile_t g_aiot_sysdep_portfile = {
     core_sysdep_malloc,
     core_sysdep_free,
     core_sysdep_time,
