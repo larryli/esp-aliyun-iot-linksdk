@@ -1,6 +1,29 @@
 # esp-aliyun-iot-linksdk
 Aliyun IOT LinkSDK 4.x for esp-idf
 
+## 使用
+
+### 新项目
+
+    idf.py create-project foobar
+    cd foobar
+    mkdir components
+    git init
+    git submodule add https://github.com/larryli/esp-aliyun-iot-linksdk components/aiot_sdk
+    idf.py build
+
+### 拉取旧项目
+
+    git clone foobar
+    cd foobar
+    git submodule sync --recursive
+    git submodule update --init --recursive
+
+### 在项目中更新组件
+
+    cd foobar
+    git pull --recurse-submodules
+
 ## SDK 功能
 
 [SDK 定制](https://iot.console.aliyun.com/lk/document/tools)页面选择如下：
