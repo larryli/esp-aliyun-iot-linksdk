@@ -9,7 +9,7 @@ Aliyun IOT LinkSDK 4.x for esp-idf
     cd foobar
     mkdir components
     git init
-    git submodule add https://github.com/larryli/esp-aliyun-iot-linksdk components/aiot_sdk
+    git submodule add https://github.com/larryli/esp-aliyun-iot-linksdk.git components/aiot_sdk
     idf.py build
 
 ### 拉取旧项目
@@ -23,6 +23,38 @@ Aliyun IOT LinkSDK 4.x for esp-idf
 
     cd foobar
     git pull --recurse-submodules
+
+## 编译选项
+
+需要使用 `idf.py menuconfig` 开启 `Component config` 下 `mbedTLS` 的 `TLS Key Exchange Methods` 中 `Enable pre-shared-key ciphersuites` 和 `Enable PSK based ciphersuite modes` 选项。
+
+或者直接修改项目 `sdkconfig` 文件：
+
+    CONFIG_MBEDTLS_PSK_MODES=y
+    CONFIG_MBEDTLS_KEY_EXCHANGE_PSK=y
+
+建议在 `sdkconfig.defaults` 文件提供以下内容：
+
+    CONFIG_MBEDTLS_SSL_MAX_CONTENT_LEN=16384
+    CONFIG_MBEDTLS_ASYMMETRIC_CONTENT_LEN=n
+    CONFIG_MBEDTLS_TLS_CLIENT_ONLY=y
+    CONFIG_MBEDTLS_PSK_MODES=y
+    CONFIG_MBEDTLS_KEY_EXCHANGE_PSK=y
+    CONFIG_MBEDTLS_KEY_EXCHANGE_DHE_PSK=n
+    CONFIG_MBEDTLS_KEY_EXCHANGE_ECDHE_PSK=n
+    CONFIG_MBEDTLS_KEY_EXCHANGE_RSA_PSK=y
+    CONFIG_MBEDTLS_KEY_EXCHANGE_RSA=y
+    CONFIG_MBEDTLS_KEY_EXCHANGE_DHE_RSA=n
+    CONFIG_MBEDTLS_KEY_EXCHANGE_ELLIPTIC_CURVE=n
+    CONFIG_MBEDTLS_SSL_RENEGOTIATION=n
+    CONFIG_MBEDTLS_SSL_PROTO_TLS1=n
+    CONFIG_MBEDTLS_SSL_PROTO_TLS1_1=n
+    CONFIG_MBEDTLS_SSL_PROTO_TLS1_2=y
+    CONFIG_MBEDTLS_PEM_WRITE_C=n
+    CONFIG_MBEDTLS_X509_CRL_PARSE_C=n
+    CONFIG_MBEDTLS_X509_CSR_PARSE_C=n
+
+更多信息请参考[乐鑫 ESP32 移植](http://code.aliyun.com/linksdk/docs/wikis/best-practice/ESP32_Porting)文档。
 
 ## SDK 功能
 
